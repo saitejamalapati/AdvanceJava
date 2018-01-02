@@ -1,4 +1,4 @@
-# AdvanceJava Project
+# Advance Java Assignment
 This project is about parssing XML files containing License data.<br>
 There are two xml files with various attributes for the data.<br><br>
 All we need to do is parse both the files, compare them and accordingly store the data in one of the three csv files.<br>
