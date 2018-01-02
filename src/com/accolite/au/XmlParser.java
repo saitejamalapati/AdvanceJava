@@ -2,6 +2,7 @@ package com.accolite.au;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -208,10 +209,20 @@ public class XmlParser {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		XmlParser parser = new XmlParser();
-		parser.parse("C:\\Users\\Hyderabad-Intern\\Desktop\\MiniAU\\advancejava\\XMLParser\\CSRData.xml" , parser.CSR_Map , false);
-		parser.parse("C:\\Users\\Hyderabad-Intern\\Desktop\\MiniAU\\advancejava\\XMLParser\\LicensesData.xml" , parser.licensesMap , true);		
-		parser.compareFiles();
+		String fileseperator = "\\";
+		String workingDirectory = System.getProperty("user.dir");
+		String csrpath = workingDirectory + fileseperator + "CSRData.xml";
+		String licensepath = workingDirectory + fileseperator + "LicensesData.xml";
+		try {
+			parser.parse(csrpath, parser.CSR_Map , false);
+			parser.parse(licensepath , parser.licensesMap , true);
+			parser.compareFiles();
+		}catch(Exception e) {
+			System.out.println("Input files don't exist\n");
+			e.printStackTrace();
+		}
+		System.out.println("Generated the required files\n");
 	}
 }
